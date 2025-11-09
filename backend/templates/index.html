@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Exam Score Predictor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #4e54c8;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #5a67d8, #6b46c1);
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🎓 Exam Score Predictor</h2>
+    <form id="predictForm">
+      <label for="hours">Hours Studied</label>
+      <input type="number" id="hours" name="hours" step="0.1" required />
+
+      <label for="previous">Previous Score</label>
+      <input type="number" id="previous" name="previous" required />
+
+      <label for="attendance">Attendance (%)</label>
+      <input type="number" id="attendance" name="attendance" required />
+
+      <button type="submit">Predict Score</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("predictForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const hours = parseFloat(document.getElementById("hours").value);
+      const previous = parseFloat(document.getElementById("previous").value);
+      const attendance = parseFloat(document.getElementById("attendance").value);
+
+      // Simulated prediction (replace with fetch API call to Python backend)
+      const predictedScore = 0.4 * hours + 0.3 * previous + 0.3 * attendance;
+
+      document.getElementById("result").innerText = `Predicted Exam Score: ${predictedScore.toFixed(2)}`;
+    });
+  </script>
+
+</body>
+</html>
